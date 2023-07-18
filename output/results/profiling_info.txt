@@ -1,0 +1,12 @@
+neurongroup_spike_resetter_codeobject	0
+neurongroup_spike_thresholder_codeobject	0.05
+neurongroup_stateupdater_codeobject	0.09
+spikemonitor_codeobject	0
+synapses_1_pre_codeobject	0.002
+synapses_1_pre_push_spikes	0.001
+synapses_2_pre_codeobject	0.001
+synapses_2_pre_push_spikes	0.001
+synapses_3_pre_codeobject	0.001
+synapses_3_pre_push_spikes	0.001
+synapses_pre_codeobject	0.003
+synapses_pre_push_spikes	0.005
