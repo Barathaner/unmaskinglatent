@@ -295,7 +295,7 @@ outputrates.append(sm.count/simtime)
 
 
 Poi.active=True
-Poix.active=True
+Poix.active=False
 
 sm = SpikeMonitor(neurons)
 run(simtime)
