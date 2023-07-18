@@ -148,56 +148,84 @@ viereckr10=Pe[viereckr10:viereckr10+10]
 # connivvr10 = Synapses(viereck10, viereckr10, on_pre='g_gaba += 0.5*nS')
 # connivvr10.connect()
 
+
+# Defining the spike times
+start_time_1 = 0.01  # Start time for the first assembly in seconds
+start_time_2 = start_time_1 + 0.01  # Start time for the second assembly 10ms after the first
+
+interval = 0.02  # Time interval between spikes in seconds
+duration = 4.0  # Total duration in seconds (4 runs * 1 second per run)
+
+times_1 = np.arange(start_time_1, duration, interval)  # Spike times for the first assembly
+times_2 = np.arange(start_time_2, duration, interval)  # Spike times for the second assembly
+
+# Repeating the indices for each spike time
+indices_1 = np.repeat(np.arange(10), len(times_1))
+indices_2 = np.repeat(np.arange(10), len(times_2))
+
+# Repeating the times for each neuron
+times_1 = np.tile(times_1, 10)
+times_2 = np.tile(times_2, 10)
+
+# Converting times to Brian2 units
+times_1 = times_1 * second
+times_2 = times_2 * second
+# Creating the SpikeGeneratorGroup
+
+
+#Poi = SpikeGeneratorGroup(10, indices_1.astype(int), times_1)  # First assembly
 Poi = PoissonGroup(10,rates=80*Hz)
-isinput=True
-S = Synapses(Poi, viereck, on_pre='g_ampa += 0.6*nS')
+
+S = Synapses(Poi, viereck, on_pre='g_ampa += 1*nS')
 S.connect()
-S1 = Synapses(Poi, viereck1, on_pre='g_ampa += 0.6*nS')
+S1 = Synapses(Poi, viereck1, on_pre='g_ampa += 1*nS')
 S1.connect()
-S2 = Synapses(Poi, viereck2, on_pre='g_ampa += 0.6*nS')
+S2 = Synapses(Poi, viereck2, on_pre='g_ampa += 1*nS')
 S2.connect()
-S3 = Synapses(Poi, viereck3, on_pre='g_ampa += 0.6*nS')
+S3 = Synapses(Poi, viereck3, on_pre='g_ampa += 1*nS')
 S3.connect()
-S4 = Synapses(Poi, viereck4, on_pre='g_ampa += 0.6*nS')
+S4 = Synapses(Poi, viereck4, on_pre='g_ampa += 1*nS')
 S4.connect()
-S5 = Synapses(Poi, viereck5, on_pre='g_ampa += 0.6*nS')
+S5 = Synapses(Poi, viereck5, on_pre='g_ampa += 1*nS')
 S5.connect()
-S6 = Synapses(Poi, viereck6, on_pre='g_ampa += 0.6*nS')
+S6 = Synapses(Poi, viereck6, on_pre='g_ampa += 1*nS')
 S6.connect()
-S7 = Synapses(Poi, viereck7, on_pre='g_ampa += 0.6*nS')
+S7 = Synapses(Poi, viereck7, on_pre='g_ampa += 1*nS')
 S7.connect()
-S8 = Synapses(Poi, viereck8, on_pre='g_ampa += 0.6*nS')
+S8 = Synapses(Poi, viereck8, on_pre='g_ampa += 1*nS')
 S8.connect()
-S9 = Synapses(Poi, viereck9, on_pre='g_ampa += 0.6*nS')
+S9 = Synapses(Poi, viereck9, on_pre='g_ampa += 1*nS')
 S9.connect()
-S10 = Synapses(Poi, viereck10, on_pre='g_ampa += 0.6*nS')
+S10 = Synapses(Poi, viereck10, on_pre='g_ampa += 1*nS')
 S10.connect()
 
 
 
 
-Poix = PoissonGroup(10,rates=89*Hz)
-Sx = Synapses(Poix, viereckr, on_pre='g_ampa += 0.6*nS')
+#Poix = SpikeGeneratorGroup(10, indices_2.astype(int), times_2)  # Second assembly
+Poix = PoissonGroup(10,rates=50*Hz)
+
+Sx = Synapses(Poix, viereckr, on_pre='g_ampa += 1*nS')
 Sx.connect()
-S1x = Synapses(Poix, viereckr1, on_pre='g_ampa += 0.6*nS')
+S1x = Synapses(Poix, viereckr1, on_pre='g_ampa += 1*nS')
 S1x.connect()
-S2x = Synapses(Poix, viereckr2, on_pre='g_ampa += 0.6*nS')
+S2x = Synapses(Poix, viereckr2, on_pre='g_ampa += 1*nS')
 S2x.connect()
-S3x = Synapses(Poix, viereckr3, on_pre='g_ampa += 0.6*nS')
+S3x = Synapses(Poix, viereckr3, on_pre='g_ampa += 1*nS')
 S3x.connect()
-S4x = Synapses(Poix, viereckr4, on_pre='g_ampa += 0.6*nS')
+S4x = Synapses(Poix, viereckr4, on_pre='g_ampa += 1*nS')
 S4x.connect()
-S5x = Synapses(Poix, viereckr5, on_pre='g_ampa += 0.6*nS')
+S5x = Synapses(Poix, viereckr5, on_pre='g_ampa += 1*nS')
 S5x.connect()
-S6x = Synapses(Poix, viereckr6, on_pre='g_ampa += 0.6*nS')
+S6x = Synapses(Poix, viereckr6, on_pre='g_ampa += 1*nS')
 S6x.connect()
-S7x = Synapses(Poix, viereckr7, on_pre='g_ampa += 0.6*nS')
+S7x = Synapses(Poix, viereckr7, on_pre='g_ampa += 1*nS')
 S7x.connect()
-S8x = Synapses(Poix, viereckr8, on_pre='g_ampa += 0.6*nS')
+S8x = Synapses(Poix, viereckr8, on_pre='g_ampa += 1*nS')
 S8x.connect()
-S9x = Synapses(Poix, viereckr9, on_pre='g_ampa += 0.6*nS')
+S9x = Synapses(Poix, viereckr9, on_pre='g_ampa += 1*nS')
 S9x.connect()
-S10x = Synapses(Poix, viereckr10, on_pre='g_ampa += 0.6*nS')
+S10x = Synapses(Poix, viereckr10, on_pre='g_ampa += 1*nS')
 S10x.connect()
 
 # ###########################################
@@ -212,7 +240,7 @@ dApost/dt=-Apost/tau_stdp : 1 (event-driven)
 alpha = 3*Hz*tau_stdp*2  # Target rate parameter
 gmax = 100               # Maximum inhibitory weight
 
-con_ie = Synapses(Pi, Pe, model=eqs_stdp_inhib,
+con_ie = Synapses(neurons, neurons, model=eqs_stdp_inhib,
                   on_pre='''Apre += 1.
                          w = clip(w+(Apost-alpha)*eta, 0, gmax)
                          g_gaba += w*nS''',
@@ -230,15 +258,15 @@ dApost/dt=-Apost/tau_stdp : 1 (event-driven)
 alpha = 3*Hz*tau_stdp*2  # Target rate parameter
 gmax = 100               # Maximum excitatory weight
 
-con_ee = Synapses(Pe, Pe, model=eqs_stdp_excit,
+con_ee = Synapses(Pe, Pe, model=eqs_stdp_inhib,
                   on_pre='''Apre += 1.
-                         w = clip(w+Apost*eta, 0, gmax)
+                         w = clip(w+(Apost-alpha)*eta, 0, gmax)
                          g_ampa += w*nS''',
                   on_post='''Apost += 1.
-                          w = clip(w-(Apre-alpha)*eta, 0, gmax)
+                          w = clip(w+Apre*eta, 0, gmax)
                        ''')
 con_ee.connect(p=epsilon)
-con_ee.w = 1e-1
+con_ee.w = 1e-5
 
 
 # ###########################################
@@ -250,7 +278,7 @@ M = StateMonitor(neurons, 'v', record=0)
 # Run with plasticity
 # ###########################################
 outputrates=[]
-eta = 1e-5
+eta = 1e-2
 Poi.active=True
 Poix.active=False
 # Learning rate
@@ -262,12 +290,12 @@ outputrates.append(sm.count/simtime)
 Poi.active=True
 Poix.active=True
 sm = SpikeMonitor(neurons)
-run(10*simtime)
+run(simtime)
 outputrates.append(sm.count/simtime)
 
 
 Poi.active=True
-Poix.active=False
+Poix.active=True
 
 sm = SpikeMonitor(neurons)
 run(simtime)
